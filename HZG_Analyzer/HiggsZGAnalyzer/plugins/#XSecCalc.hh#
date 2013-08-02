@@ -1,0 +1,55 @@
+#ifndef XSECCALC_HH
+#define XSECCALC_HH
+#define STANDALONE
+
+#include "TEvtProb.hh"
+
+#include <sstream>
+#include <string>
+
+#include <iostream>
+#include <iomanip>
+#include <ostream>
+#include <fstream>
+
+#include "TObject.h"
+#include "TLorentzVector.h"
+#include "TMath.h"
+#include "TTree.h"
+#include "TChain.h"
+#include "TFile.h"
+#include "TString.h"
+#include "assert.h"
+#include "TROOT.h"
+// ME related          
+#include "TMCFM.hh"
+#include "TVar.hh"
+#include "TUtil.hh"
+#include "HiggsCSandWidth.h"
+
+//----------------------------------------                                                                       
+// Class XSecCalc                                                                                               
+//----------------------------------------  
+class XSecCalc : public TObject {
+
+public:
+  //------------------
+  // Variables
+  //------------------
+  TVar::Process _process;
+  TVar::MatrixElement _matrixElement;
+  TVar::Production _production;
+  HiggsCSandWidth *myCSW_;
+  double _hmass;
+  double _hwidth;
+
+  //------------------------------------------------
+  // Constructors and Destructor
+  //------------------------------------------------
+  XSecCalc();
+  ~XSecCalc();
+
+  //-----------------
+  // Function
+  //-----------------
+  
