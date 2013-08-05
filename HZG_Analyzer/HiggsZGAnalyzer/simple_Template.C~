@@ -26,6 +26,7 @@
 #include "simple_v2.h"
 #include <TH2.h>
 #include <TStyle.h>
+#include "plugins/TEvtProb.hh"
 
 string  selection      = "eeGamma";
 string  period         = "2012";
@@ -49,8 +50,8 @@ void simple_v2::Begin(TTree * /*tree*/)
   float dXsec_ZGam_MCFM = 0.;
   float dXsec_HZGam_MCFM = 0.;
 
-  histoFile->Branch("dxSec_ZGam_MCFM"   , &dXsec_ZGam_MCFM ,"dXsec_ZGam_MCFM/F");
-  histoFile->Branch("dxSec_HZGam_MCFM"   , &dXsec_HZGam_MCFM ,"dXsec_HZGam_MCFM/F");
+  //histoFile->Branch("dxSec_ZGam_MCFM"   , &dXsec_ZGam_MCFM ,"dXsec_ZGam_MCFM/F");
+  //histoFile->Branch("dxSec_HZGam_MCFM"   , &dXsec_HZGam_MCFM ,"dXsec_HZGam_MCFM/F");
 
   TString option = GetOption();
 
@@ -146,7 +147,7 @@ Bool_t simple_v2::Process(Long64_t entry)
       double dXsec_ZGam_MCFM = 0.;    //Background Discriminant Value
       double dXsec_HZGam_MCFM = 0.;   //Signal Discriminant Value
       hzgamma_event_type hzgamma_event;
-      TEvtProb.Xcal2;
+      TEvtProb Xcal2;
 
       TLorentzVector p0, p1, p2, psum;
       TVector3 bv;
@@ -189,11 +190,11 @@ Bool_t simple_v2::Process(Long64_t entry)
 	std::cout << "Z mass = " << zmass << "\tgammass = " << gammass << "\n";
 	cout << "=========================================================\n";
       }
-      Xcal2.SetHiggsMass(zgammmass);
+      Xcal2.SetHiggsMass(zgammass);
       Xcal2.SetMatrixElement(TVar::MCFM);
       dXsec_ZGam_MCFM = Xcal2.XsecCalc(TVar::qqb_zgam, TVar::QQB, hzgamma_event, verbose);
       dXsec_HZGam_MCFM = Xcal2.XsecCalc(TVar::gg_hzgam, TVar::GG, hzgamma_event, verbose);
-      histoFile->Fill();
+      //histoFile->Fill();
     }
   }
 

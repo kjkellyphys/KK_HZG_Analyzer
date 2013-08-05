@@ -28,7 +28,7 @@
 #include "../src/TCGenParticle.h"
 #include "plugins/HistManager.h"
 #include "plugins/ZGAngles.h"
-#include "plugins/TEvtProb.hh"
+#include "plugins/hzgammaME/TEvtProb.hh"
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
 

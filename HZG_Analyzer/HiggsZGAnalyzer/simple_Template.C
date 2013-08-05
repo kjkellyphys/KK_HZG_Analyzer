@@ -26,7 +26,7 @@
 #include "simple_v2.h"
 #include <TH2.h>
 #include <TStyle.h>
-#include "plugins/TEvtProb.hh"
+#include "plugins/hzgammaME/TEvtProb.hh"
 
 string  selection      = "eeGamma";
 string  period         = "2012";
